@@ -34,6 +34,7 @@ public class CookieServlet extends HttpServlet {
         out.println("<title>Cookie Sevlet GET</title>");
         out.println("</head>");
         out.println("<body>");
+        out.println("<h2>Hello</h2>");
         out.println("<h2>" + request.getServerName()+ "</h2>");
         out.println("<h2>" + InetAddress.getLocalHost().getHostName()+ "</h2>");
         if (cookie != null){
