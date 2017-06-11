@@ -8,7 +8,7 @@ pipeline {
         stage('チェックアウト') {
             steps {
                 // Gitリポジトリの指定
-                git url: 'https://github.com/hidepin/Jenkins_Practical_Guide_3rd_Edition.git'
+                git url: 'https://github.com/hidepin/sampleapp.git'
             }
         }
         stage('Mavenリポジトリ') {
