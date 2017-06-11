@@ -30,7 +30,11 @@ public class NormalServlet extends HttpServlet {
         out.println("</form>");
         out.println("<form method=\"GET\" action=\""
                     + request.getContextPath() + "/CookieServlet\">");
-        out.println("<input type=\"submit\" value =\"counter\">" );
+        out.println("<input type=\"submit\" value =\"view counter\">" );
+        out.println("</form>");
+        out.println("<form method=\"POST\" action=\""
+                    + request.getContextPath() + "/CookieServlet\">");
+        out.println("<input type=\"submit\" value =\"count up\">" );
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");

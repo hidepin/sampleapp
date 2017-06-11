@@ -21,7 +21,6 @@ public class CookieServlet extends HttpServlet {
         if (session.getAttribute(sessionKey) != null) {
             counter = ((Integer)session.getAttribute(sessionKey)).intValue();
         }
-        session.setAttribute(sessionKey,Integer.valueOf(counter+1));
 
         PrintWriter out = response.getWriter();
 
@@ -34,20 +33,77 @@ public class CookieServlet extends HttpServlet {
         out.println("<title>Cookie Sevlet GET</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h2>" + request.getServerName()+ "</h2>");
-        out.println("<h2>" + InetAddress.getLocalHost().getHostName()+ "</h2>");
+        out.println("<h2>[AP Server]: " + request.getServerName()+ "</h2>");
         if (cookie != null){
             for (int i = 0 ; i < cookie.length ; i++){
-                out.println("<h2>name:" + cookie[i].getName() + " value:" + cookie[i].getValue() + "</h2>");
+                out.println("<h2>[Cookie Name]:" + cookie[i].getName() + " [Cookie Value]:" + cookie[i].getValue() + "</h2>");
             }
         }
-        out.println("<h2>Session value</h2>");
-        out.println("<h2>" + counter + "</h2>");
+        out.println("<h2>[Counter]: " + counter + "</h2>");
+        out.println("<form method=\"GET\" action=\""
+                    + request.getContextPath() + "/NormalServlet\">");
+        out.println("<input type=\"submit\" value =\"normal\">" );
+        out.println("</form>");
         out.println("<form method=\"GET\" action=\""
                     + request.getContextPath() + "/CookieServlet\">");
-        out.println("<input type=\"submit\" value =\"counter\">" );
+        out.println("<input type=\"submit\" value =\"view counter\">" );
+        out.println("</form>");
+        out.println("<form method=\"POST\" action=\""
+                    + request.getContextPath() + "/CookieServlet\">");
+        out.println("<input type=\"submit\" value =\"count up\">" );
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
     }
+
+    public void doPost(HttpServletRequest request,
+                      HttpServletResponse response)
+        throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
+        Cookie cookie[] = request.getCookies();
+
+        int counter = 1;
+        if (session.getAttribute(sessionKey) != null) {
+            counter = ((Integer)session.getAttribute(sessionKey)).intValue();
+            counter++;
+        }
+        session.setAttribute(sessionKey,Integer.valueOf(counter));
+
+        PrintWriter out = response.getWriter();
+
+        response.setContentType("text/html; charset=utf-8");
+
+        response.setContentType("text/html; charset=utf-8");
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset=\"utf-8\">");
+        out.println("<title>Cookie Sevlet GET</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h2>[AP Server]: " + request.getServerName()+ "</h2>");
+        if (cookie != null){
+            for (int i = 0 ; i < cookie.length ; i++){
+                out.println("<h2>[Cookie Name]:" + cookie[i].getName() + " [Cookie Value]:" + cookie[i].getValue() + "</h2>");
+            }
+        }
+        out.println("<h2>[Counter]: " + counter + "</h2>");
+        out.println("<form method=\"GET\" action=\""
+                    + request.getContextPath() + "/NormalServlet\">");
+        out.println("<input type=\"submit\" value =\"normal\">" );
+        out.println("</form>");
+        out.println("<form method=\"GET\" action=\""
+                    + request.getContextPath() + "/CookieServlet\">");
+        out.println("<input type=\"submit\" value =\"view counter\">" );
+        out.println("</form>");
+        out.println("<form method=\"POST\" action=\""
+                    + request.getContextPath() + "/CookieServlet\">");
+        out.println("<input type=\"submit\" value =\"count up\">" );
+        out.println("</form>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+
 }
