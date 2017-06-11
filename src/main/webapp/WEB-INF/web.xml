@@ -5,6 +5,14 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+    <servlet-name>NormalServlet</servlet-name>
+    <servlet-class>NormalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NormalServlet</servlet-name>
+    <url-pattern>/NormalServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>CookieServlet</servlet-name>
     <servlet-class>CookieServlet</servlet-class>
   </servlet>
