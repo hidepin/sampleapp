@@ -35,6 +35,10 @@ pipeline {
         }
         stage('コード解析結果の集計') {
             steps {
+                // CheckStyle
+                checkstyle canComputeNew: false, defaultEncoding: 'UTF-8'
+                // FindBugs
+                findbugs canComputeNew: false, defaultEncoding: 'UTF-8'
                 // StepCounter結果の集計
                 stepcounter outputFile: '', outputFormat: 'excel', settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java']]
             }
