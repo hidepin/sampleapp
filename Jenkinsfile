@@ -38,7 +38,7 @@ pipeline {
                 // CheckStyle
                 checkstyle canComputeNew: false, defaultEncoding: 'UTF-8'
                 // FindBugs
-                findbugs canComputeNew: false, defaultEncoding: 'UTF-8'
+                findbugs canComputeNew: false, defaultEncoding: 'UTF-8', pattern: '**/findbugsXml.xml'
                 // StepCounter結果の集計
                 stepcounter outputFile: '', outputFormat: 'excel', settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java']]
             }
