@@ -28,6 +28,11 @@ pipeline {
 //                junit 'target/surefire-reports/*.xml'
 //            }
 //        }
+        stage('カバレッジ') {
+            steps {
+                jacoco()
+            }
+        }
         stage('コード解析結果の集計') {
             steps {
                 // StepCounter結果の集計
