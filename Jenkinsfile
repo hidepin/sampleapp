@@ -23,6 +23,11 @@ pipeline {
                 archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
             }
         }
+//        stage('JUnitテスト結果の集計') {
+//            steps {
+//                junit 'target/surefire-reports/*.xml'
+//            }
+//        }
         stage('コード解析結果の集計') {
             steps {
                 // StepCounter結果の集計
