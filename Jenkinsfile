@@ -11,11 +11,16 @@ pipeline {
                 git url: 'https://github.com/hidepin/sampleapp.git'
             }
         }
-        stage('Mavenリポジトリ') {
+        stage('Maven build') {
             steps {
                 ansiColor('xterm') {
                     sh "mvn clean package"
                 }
+            }
+        }
+        stage('成果物の保存') {
+            steps {
+                archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
             }
         }
         stage('コード解析結果の集計') {
