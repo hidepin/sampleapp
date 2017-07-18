@@ -4,24 +4,31 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <distributable />
+
   <servlet>
     <servlet-name>NormalServlet</servlet-name>
     <servlet-class>NormalServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>NormalServlet</servlet-name>
-    <url-pattern>/NormalServlet</url-pattern>
-  </servlet-mapping>
+
   <servlet>
     <servlet-name>CookieServlet</servlet-name>
     <servlet-class>CookieServlet</servlet-class>
   </servlet>
+
+  <servlet-mapping>
+    <servlet-name>NormalServlet</servlet-name>
+    <url-pattern>/NormalServlet</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>CookieServlet</servlet-name>
     <url-pattern>/CookieServlet</url-pattern>
   </servlet-mapping>
+
   <session-config>
     <session-timeout>2</session-timeout>
   </session-config>
-  <distributable/>
+
 </web-app>
