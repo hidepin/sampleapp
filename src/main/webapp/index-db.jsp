@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<sql:query var="rs" dataSource="jdbc/dbDB">
+<sql:query var="rs" dataSource="jdbc/dbDS">
 select i_id, i_im_id, i_name from item limit 10
 </sql:query>
 
