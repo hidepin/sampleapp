@@ -34,7 +34,7 @@ public class PreparedStatementServlet extends HttpServlet {
 
 			String sql = "SELECT i_id, i_im_id, i_name from item where i_id = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, new Random.nextInt(100000));
+			pstmt.setInt(1, new Random().nextInt(100000));
 
 			ResultSet rs = pstmt.executeQuery();
 
