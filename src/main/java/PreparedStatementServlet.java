@@ -50,7 +50,7 @@ public class PreparedStatementServlet extends HttpServlet {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int i_id = rs.getInt("i_id");
+				int i_id = rs.getInt(i_name);
 				int i_im_id = rs.getInt("i_im_id");
 				i_name= rs.getString("i_name");
 				out.println("<p>");
