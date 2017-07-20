@@ -47,7 +47,7 @@ public class PreparedStatementServlet extends HttpServlet {
 				out.println("</p>");
 			}
 
-			sql = "SELECT i_id AS " + i_name + ", i_im_id, i_name FROM item WHERE i_id = ?";
+			sql = "SELECT i_id AS '" + i_name + "', i_im_id, i_name FROM item WHERE i_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, new Random().nextInt(100000));
 			rs = pstmt.executeQuery();
