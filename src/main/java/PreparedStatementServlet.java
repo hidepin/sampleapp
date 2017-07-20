@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +27,8 @@ public class PreparedStatementServlet extends HttpServlet {
 		Connection conn = null;
 
 		try {
-			Context initContext = new InitialContext();
-			Context envContext  = (Context)initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource)envContext.lookup("jdbc/dbDS");
+			InitialContext cxt = new InitialContext();
+			DataSource ds = (DataSource)cxt.lookup("java:/comp/env/jdbc/dbDS");
 			conn = ds.getConnection();
 
 			String sql = "SELECT i_id, i_im_id, i_name from item where i_id = ?";
