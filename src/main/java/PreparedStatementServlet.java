@@ -47,7 +47,7 @@ public class PreparedStatementServlet extends HttpServlet {
 				out.println("</p>");
 			}
 
-			sql = "SELECT i_id AS '" + i_name.replaceFirst(\\d, 'a') + "', i_im_id, i_name FROM item WHERE i_id = ?";
+			sql = "SELECT i_id AS '" + i_name.replaceFirst("[0-9]+", "a") + "', i_im_id, i_name FROM item WHERE i_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, new Random().nextInt(100000));
 			rs = pstmt.executeQuery();
@@ -56,7 +56,7 @@ public class PreparedStatementServlet extends HttpServlet {
 				out.println("<p>");
 				out.println(sql);
 				out.println("</p>");
-				int i_id = rs.getInt(i_name.replaceFirst(\\d, 'a'));
+				int i_id = rs.getInt(i_name.replaceFirst("[0-9]+", "a"));
 				int i_im_id = rs.getInt("i_im_id");
 				i_name= rs.getString("i_name");
 				out.println("<p>");
