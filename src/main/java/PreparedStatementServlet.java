@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ public class PreparedStatementServlet extends HttpServlet {
 
 			String sql = "SELECT i_id, i_im_id, i_name from item where i_id = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1, new Random.nextInt(100000));
 
 			ResultSet rs = pstmt.executeQuery();
 
