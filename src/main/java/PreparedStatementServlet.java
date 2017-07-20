@@ -32,16 +32,27 @@ public class PreparedStatementServlet extends HttpServlet {
 			DataSource ds = (DataSource)cxt.lookup("java:/comp/env/jdbc/dbDS");
 			conn = ds.getConnection();
 
-			String sql = "SELECT i_id, i_im_id, i_name from item where i_id = ?";
+			String sql = "SELECT i_id, i_im_id, i_name FROM item WHERE i_id = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, new Random().nextInt(100000));
-
 			ResultSet rs = pstmt.executeQuery();
+
+			String i_name = null;
+			while (rs.next()) {
+				int i_id = rs.getInt("i_id");
+				int i_im_id = rs.getInt("i_im_id");
+				i_name= rs.getString("i_name");
+			}
+
+			sql = "SELECT i_id AS " + i_name + ", i_im_id, i_name FROM item WHERE i_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, new Random().nextInt(100000));
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				int i_id = rs.getInt("i_id");
 				int i_im_id = rs.getInt("i_im_id");
-				String i_name= rs.getString("i_name");
+				i_name= rs.getString("i_name");
 				out.println("<p>");
 				out.println("i_id:" + i_id + ", i_im_id:" + i_im_id + ", i_name:" + i_name);
 				out.println("</p>");
