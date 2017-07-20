@@ -18,8 +18,8 @@
   </servlet>
 
   <servlet>
-    <servlet-name>PrepareStatementServlet</servlet-name>
-    <servlet-class>PrepareStatementServlet</servlet-class>
+    <servlet-name>PreparedStatementServlet</servlet-name>
+    <servlet-class>PreparedStatementServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -33,8 +33,8 @@
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>PrepareStatementServlet</servlet-name>
-    <url-pattern>/PrepareStatementServlet</url-pattern>
+    <servlet-name>PreparedStatementServlet</servlet-name>
+    <url-pattern>/PreparedStatementServlet</url-pattern>
   </servlet-mapping>
 
   <session-config>
