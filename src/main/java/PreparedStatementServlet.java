@@ -42,8 +42,11 @@ public class PreparedStatementServlet extends HttpServlet {
 				int i_id = rs.getInt("i_id");
 				int i_im_id = rs.getInt("i_im_id");
 				i_name= rs.getString("i_name");
+				out.println("<p>");
+				out.println("i_id:" + i_id + ", i_im_id:" + i_im_id + ", i_name:" + i_name);
+				out.println("</p>");
 			}
-
+/*
 			sql = "SELECT i_id AS " + i_name + ", i_im_id, i_name FROM item WHERE i_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, new Random().nextInt(100000));
@@ -60,7 +63,7 @@ public class PreparedStatementServlet extends HttpServlet {
 				out.println("i_id:" + i_id + ", i_im_id:" + i_im_id + ", i_name:" + i_name);
 				out.println("</p>");
 			}
-
+*/
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
