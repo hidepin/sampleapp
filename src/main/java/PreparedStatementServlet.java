@@ -21,7 +21,7 @@ public class PreparedStatementServlet extends HttpServlet {
 
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>P</title>");
+		out.println("<title>PreparedStatement</title>");
 		out.println("</head>");
 		out.println("<body>");
 
