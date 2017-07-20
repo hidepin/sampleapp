@@ -34,7 +34,7 @@ public class PreparedStatementServlet extends HttpServlet {
 
 			int argnum = new Random().nextInt(10000) + 1;
 			String parg = "?";
-			for (int i = 0; i < argnum; i++) {
+			for (int i = 0; i < argnum - 1; i++) {
 				parg = parg + ", ?";
 			}
 			String sql = "SELECT i_id, i_im_id, i_name FROM item WHERE i_id in (" + parg + ")";
