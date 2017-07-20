@@ -51,7 +51,7 @@ public class PreparedStatementServlet extends HttpServlet {
 
 			while (rs.next()) {
 				out.println("<p>");
-				out.println("sql");
+				out.println(sql);
 				out.println("</p>");
 				int i_id = rs.getInt(i_name);
 				int i_im_id = rs.getInt("i_im_id");
