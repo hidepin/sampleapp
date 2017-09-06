@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven "Maven3.5.0"
-        jdk "OracleJDK8u131"
     }
     stages {
         stage('チェックアウト') {
