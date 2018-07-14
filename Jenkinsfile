@@ -42,13 +42,12 @@ pipeline {
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
             }
         }
-        stage('通知') {
-            steps {
-                mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
-                mattermostSend color: 'good', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                mattermostSend color: 'warning', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                mattermostSend color: 'danger', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                mattermostSend color: 'danger', failOnError: false, message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+        post {
+            success {
+                mattermostSend color: 'good', message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} :white_check_mark: Success after (<${env.BUILD_URL}|Open>)"
+            }
+            failure {
+                mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Failed after (<${env.BUILD_URL}|Open)"
             }
         }
     }
