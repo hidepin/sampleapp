@@ -16,6 +16,14 @@ pipeline {
                     sh "mvn clean package"
                 }
             }
+            post {
+                 success {
+                    mattermostSend color: 'good', message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} :white_check_mark: Success after (<${env.BUILD_URL}|Open>)"
+                 }
+                 failure {
+                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Failed after (<${env.BUILD_URL}|Open)"
+                 }
+            }
         }
         stage('成果物の保存') {
             steps {
@@ -40,14 +48,6 @@ pipeline {
                 findbugs canComputeNew: false, defaultEncoding: 'UTF-8', pattern: '**/findbugsXml.xml'
                 // StepCounter結果の集計
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
-            }
-        }
-        post {
-            success {
-                mattermostSend color: 'good', message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} :white_check_mark: Success after (<${env.BUILD_URL}|Open>)"
-            }
-            failure {
-                mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Failed after (<${env.BUILD_URL}|Open)"
             }
         }
     }
