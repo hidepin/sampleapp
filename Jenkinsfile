@@ -45,8 +45,10 @@ pipeline {
         stage('通知') {
             steps {
                 mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
-                mattermostSend message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                mattermostSend failOnError: true, message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+                mattermostSend color: 'good', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                mattermostSend color: 'warning', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                mattermostSend color: 'danger', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                mattermostSend color: 'danger', failOnError: true, message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
             }
         }
     }
