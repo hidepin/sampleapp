@@ -48,7 +48,7 @@ pipeline {
                 mattermostSend color: 'good', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 mattermostSend color: 'warning', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 mattermostSend color: 'danger', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                mattermostSend color: 'danger', failOnError: true, message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+                mattermostSend color: 'danger', failOnError: false, message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
             }
         }
     }
