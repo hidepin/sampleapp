@@ -42,5 +42,8 @@ pipeline {
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
             }
         }
+        stage('通知') {
+                mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
+        }
     }
 }
