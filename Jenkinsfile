@@ -43,7 +43,9 @@ pipeline {
             }
         }
         stage('通知') {
+            steps {
                 mattermostSend color: 'good', message: 'Message from Jenkins Pipeline', text: 'optional for @here mentions and searchable text'
+            }
         }
     }
 }
