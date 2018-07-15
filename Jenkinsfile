@@ -18,10 +18,10 @@ pipeline {
             }
             post {
                  success {
-                    mattermostSend color: 'good', message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} :white_check_mark: Success after (<${env.BUILD_URL}|Open>)"
+                    mattermostSend color: 'good', message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} :white_check_mark: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)"
                  }
                  failure {
-                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} Failed after (<${env.BUILD_URL}|Open)"
+                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :no_entry_sign:  Failed after (<${env.BUILD_URL}|Open)"
                  }
             }
         }
