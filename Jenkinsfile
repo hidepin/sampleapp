@@ -18,8 +18,7 @@ pipeline {
             }
             post {
                  success {
-                    mattermostSend color: 'good', message: "BUILD_ID=${env.BUILD_ID} BUILD_DISPLAY_NAME=${env.BUILD_DISPLAY_NAME} BUILD_TAG=${BUILD_TAG} JOB_URL=${JOB_URL} JOB_NAME=${env.JOB_NAME} - BUILD_NUMBER=${env.BUILD_NUMBER} :green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)","BRANCH_NAME=${env.BRANCH_NAME}"
-                    mattermostSend color: 'good', message: "CHANGE_ID=${env.CHANGE_ID}"
+                    mattermostSend color: 'good', message: "BUILD_ID=${env.BUILD_ID} BUILD_DISPLAY_NAME=${env.BUILD_DISPLAY_NAME} BUILD_TAG=${BUILD_TAG} JOB_URL=${JOB_URL} JOB_NAME=${env.JOB_NAME} - BUILD_NUMBER=${env.BUILD_NUMBER} :green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) BRANCH_NAME=${env.BRANCH_NAME} CHANGE_ID=${env.CHANGE_ID}"
                     mattermostSend color: 'good', message: "CHANGE_URL=${env.CHANGE_URL}"
                     mattermostSend color: 'good', message: "CHANGE_TITLE=${env.CHANGE_TITLE}"
                     mattermostSend color: 'good', message: "CHANGE_AUTHOR=${env.CHANGE_AUTHOR}"
