@@ -18,7 +18,7 @@ pipeline {
             }
             post {
                  success {
-                    mattermostSend color: 'good', message: "BUILD_ID=${env.BUILD_ID} BUILD_DISPLAY_NAME=${env.BUILD_DISPLAY_NAME} BUILD_TAG=${BUILD_TAG} JOB_URL=${JOB_URL} JOB_NAME=${env.JOB_NAME} - BUILD_NUMBER=${env.BUILD_NUMBER} :grean_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)"
+                    mattermostSend color: 'good', message: "BUILD_ID=${env.BUILD_ID} BUILD_DISPLAY_NAME=${env.BUILD_DISPLAY_NAME} BUILD_TAG=${BUILD_TAG} JOB_URL=${JOB_URL} JOB_NAME=${env.JOB_NAME} - BUILD_NUMBER=${env.BUILD_NUMBER} :green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>)"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
