@@ -3,7 +3,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-public class NormalServlet extends HttpServlet {
+public class NormalServleta extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
