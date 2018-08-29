@@ -14,6 +14,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh "mvn clean package"
+                    sh "./tools/chkfile.py"
                 }
             }
         }
