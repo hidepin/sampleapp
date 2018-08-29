@@ -14,13 +14,14 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh "mvn clean package"
-                    sh "./tools/chkfile.py"
+                    sh "./tools/chkfile.py > ./result-check.txt"
                 }
             }
         }
         stage('成果物の保存') {
             steps {
                 archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'result-check.txt', fingerprint: true, onlyIfSuccessful: true
             }
         }
 //        stage('JUnitテスト結果の集計') {
