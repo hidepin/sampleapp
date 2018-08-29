@@ -44,9 +44,4 @@ pipeline {
             }
         }
     }
-                post {
-                 always {
-                    mattermostSend color: 'good', message: "always"
-                 }
-            }
 }
