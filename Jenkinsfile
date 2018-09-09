@@ -36,6 +36,8 @@ pipeline {
         }
         stage('コード解析結果の集計') {
             steps {
+                // PMD
+                pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/target/pmd.xml', unHealthy: ''
                 // CheckStyle
                 checkstyle canComputeNew: false, defaultEncoding: 'UTF-8'
                 // FindBugs

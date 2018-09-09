@@ -39,6 +39,24 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>${maven-pmd.version}</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <configuration>
+              <targetJdk>1.8</targetJdk>
+            </configuration>
+            <goals>
+                <goal>pmd</goal>
+                <goal>cpd</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${maven-checkstyle.version}</version>
         <executions>
@@ -74,12 +92,21 @@
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.5</version>
+      </plugin>
+    </plugins>
+  </reporting>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jacoco-maven.version>0.7.9</jacoco-maven.version>
     <jacoco.include.package>**/*</jacoco.include.package>
+    <maven-pmd.version>3.10.0</maven-pmd.version>
     <maven-checkstyle.version>2.17</maven-checkstyle.version>
     <findbugs-maven.version>3.0.4</findbugs-maven.version>
-
   </properties>
 </project>
