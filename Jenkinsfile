@@ -49,11 +49,13 @@ pipeline {
             }
             post {
                  success {
-                    CHECKSTYLE_RESULT = sh (
-                                      script: 'find .',
-                                      returnStdout: true
-                    )
-                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CHECKSTYLE_RESULT}"
+                    environment {
+        CC = """${sh(
+                returnStdout: true,
+                script: 'echo "clang"'
+            )}"""
+                    }
+                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CC}"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
