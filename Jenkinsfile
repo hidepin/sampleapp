@@ -52,10 +52,14 @@ pipeline {
                            script: 'find . -name "pmd.xml" -exec cat {} \\; |grep "<violation" |wc -l|tr -d "\n"',
                            returnStdout: true
                            )}"""
+                        CPD_RESULT = """${sh(
+                           script: 'find . -name "cpd.xml" -exec cat {} \\; |grep "<duplication" |wc -l|tr -d "\n"',
+                           returnStdout: true
+                           )}"""
             }
             post {
                  success {
-                    mattermostSend text: "@admin @jenkins hogehoge\n", color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n\n|チェック方法|結果|\n|:---|:---|\n|PMD|${PMD_RESULT}|"
+                    mattermostSend text: "@admin @jenkins hogehoge\n", color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n\n|チェック方法|結果|\n|:---|:---|\n|PMD|${PMD_RESULT}|\n|CPD|${CPD_RESULT}|"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
