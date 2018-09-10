@@ -55,7 +55,7 @@ pipeline {
             }
             post {
                  success {
-                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n|チェック方法|結果|\n|:---|:---|\n|PMD|aa|"
+                    mattermostSend text: "@admin @jenkins hogehoge\n|チェック方法|結果|\n|:---|:---|\n|PMD|aa|", color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
