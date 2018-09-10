@@ -48,14 +48,14 @@ pipeline {
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
             }
             environment {
-                        CC = """${sh(
-                           script: 'echo "clang"',
+                        PMD_RESULT = """${sh(
+                           script: 'find . -name "pmd.xml" -exec cat {} \\; | grep "<violation" | wc -l',
                            returnStdout: true
                            )}"""
             }
             post {
                  success {
-                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CC}"
+                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n PMD_RESULT=${env.PMD_RESULT}"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
