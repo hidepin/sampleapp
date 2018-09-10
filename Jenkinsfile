@@ -50,7 +50,7 @@ pipeline {
             post {
                  success {
                     CHECKSTYLE_RESULT = sh (
-                                      scirpt 'find . -name "pmd.xml" -exec cat {} \\; | grep "<violation" | wc -l',
+                                      scirpt "find . -name \"pmd.xml\" -exec cat {} \\; | grep \"<violation\" | wc -l",
                                       returnStdout: true
                     )
                     mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CHECKSTYLE_RESULT}"
