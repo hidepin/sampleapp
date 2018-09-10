@@ -47,9 +47,8 @@ pipeline {
                 // StepCounter結果の集計
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
             }
-        }
-        post {
-             success {
+            post {
+                 success {
 -                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: "BUILD_ID=${env.BUILD_ID} BUILD_DISPLAY_NAME=${env.BUILD_DISPLAY_NAME} BUILD_TAG=${BUILD_TAG} JOB_URL=${JOB_URL} JOB_NAME=${env.JOB_NAME} - BUILD_NUMBER=${env.BUILD_NUMBER} :green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n BRANCH_NAME=${env.BRANCH_NAME} <br> CHANGE_ID=${env.CHANGE_ID}"
                     mattermostSend color: 'good', message: "CHANGE_URL=${env.CHANGE_URL}"
                     mattermostSend color: 'good', message: "CHANGE_TITLE=${env.CHANGE_TITLE}"
@@ -58,10 +57,11 @@ pipeline {
                     mattermostSend color: 'good', message: "CHANGE_CHANGE_AUTHOR_EMAIL=${env.CHANGE_AUTHOR_EMAIL}"
                     mattermostSend color: 'good', message: "CHANGE_TARGET=${env.CHANGE_TARGET}"
                     mattermostSend color: 'good', message: "changeSets=${currentBuild.changeSets}"
-              }
-              failure {
+                 }
+                 failure {
 -                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
-              }
-       }
+                 }
+             }
+        }
     }
 }
