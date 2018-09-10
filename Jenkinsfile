@@ -47,16 +47,12 @@ pipeline {
                 // StepCounter結果の集計
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
             }
+            environment {
+                        CC = """${sh(
+                           script: 'echo "clang"'
+                           returnStdout: true,
+                           )}"""
             }
-                    environment {
-
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}"""
-                    }
-
-
             post {
                  success {
                     mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CC}"
@@ -65,5 +61,6 @@ pipeline {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
                  }
              }
+            }
     }
 }
