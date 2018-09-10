@@ -49,8 +49,8 @@ pipeline {
             }
             environment {
                         CC = """${sh(
-                           script: 'echo "clang"'
-                           returnStdout: true,
+                           script: 'echo "clang"',
+                           returnStdout: true
                            )}"""
             }
             post {
