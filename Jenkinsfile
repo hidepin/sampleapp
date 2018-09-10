@@ -49,7 +49,11 @@ pipeline {
             }
             post {
                  success {
-                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n BRANCH_NAME=${env.BRANCH_NAME} <br> CHANGE_ID=${env.CHANGE_ID}"
+                    CHECKSTYLE_RESULT = sh (
+                                      scirpt 'find . -name "pmd.xml" -exec cat {} \; | grep "<violation" | wc -l',
+                                      returnStdout: true
+                    )
+                    mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CHECKSTYLE_RESULT}"
                  }
                  failure {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
