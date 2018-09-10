@@ -59,7 +59,7 @@ pipeline {
                     mattermostSend color: 'good', message: "changeSets=${currentBuild.changeSets}"
                  }
                  failure {
--                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
+                    mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
                  }
              }
         }
