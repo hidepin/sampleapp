@@ -3,6 +3,13 @@ pipeline {
     tools {
         maven "Maven3.5.0"
     }
+                    environment {
+        CC = """${sh(
+                returnStdout: true,
+                script: 'echo "clang"'
+            )}"""
+                    }
+
     stages {
         stage('チェックアウト') {
             steps {
@@ -49,12 +56,6 @@ pipeline {
             }
             post {
                  success {
-                    environment {
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}"""
-                    }
                     mattermostSend text: "@admin @jenkins hogehoge" , color: 'good', message: ":green_heart: Success after ${currentBuild.durationString} (<${env.BUILD_URL}|Open>) \n CHECKSTYLE_RESULT=${env.CC}"
                  }
                  failure {
