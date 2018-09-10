@@ -46,9 +46,10 @@ pipeline {
                 findbugs canComputeNew: false, defaultEncoding: 'UTF-8', pattern: '**/findbugsXml.xml'
                 // StepCounter結果の集計
                 stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', filePatternExclude: '', key: 'java'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.jsp', filePatternExclude: '', key: 'jsp'], [encoding: 'UTF-8', filePattern: 'src/main/webapp/**/*.xml', filePatternExclude: '', key: 'xml']]
+            }
+            }
                     environment {
-            }
-            }
+
         CC = """${sh(
                 returnStdout: true,
                 script: 'echo "clang"'
