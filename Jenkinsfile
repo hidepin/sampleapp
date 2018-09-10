@@ -49,7 +49,7 @@ pipeline {
             }
             environment {
                         PMD_RESULT = """${sh(
-                           script: 'find . -name "pmd.xml" -exec cat {} \\; | grep "<violation" | wc -l',
+                           script: 'find . -name "pmd.xml" -exec cat {} \\; |grep "<violation" |wc -l|tr -d "\n"',
                            returnStdout: true
                            )}"""
             }
