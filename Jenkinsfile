@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven "Maven3.5.0"
     }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
     stages {
         stage('チェックアウト') {
             steps {
