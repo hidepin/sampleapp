@@ -72,7 +72,10 @@ pipeline {
                 archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
                 archiveArtifacts artifacts: 'result-check.txt', fingerprint: true, onlyIfSuccessful: true
                 archiveArtifacts artifacts: 'sample-result.csv', fingerprint: true, onlyIfSuccessful: true
+plot csvFileName: 'plot-54a7c04d-9084-485f-baaa-a20e5dbb6a38.csv', csvSeries: [[displayTableFlag: true, exclusionValues: '', file: 'sample-result.csv', inclusionFlag: 'OFF', url: '']], group: '開発規模グループ', numBuilds: '10', style: 'line', title: '開発規模', yaxis: 'ライン数'
             }
+
         }
+
     }
 }
