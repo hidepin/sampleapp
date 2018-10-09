@@ -21,12 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('成果物の保存') {
-            steps {
-                archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
-                archiveArtifacts artifacts: 'result-check.txt', fingerprint: true, onlyIfSuccessful: true
-            }
-        }
 //        stage('JUnitテスト結果の集計') {
 //            steps {
 //                junit 'target/surefire-reports/*.xml'
@@ -72,6 +66,13 @@ pipeline {
                     mattermostSend color: 'danger', message: "error Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} :broken_heart:  Failed after (<${env.BUILD_URL}|Open)"
                  }
              }
+        }
+        stage('成果物の保存') {
+            steps {
+                archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'result-check.txt', fingerprint: true, onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'sample-result.csv', fingerprint: true, onlyIfSuccessful: true
             }
+        }
     }
 }
