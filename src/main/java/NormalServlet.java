@@ -22,6 +22,7 @@ public class NormalServlet extends HttpServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h2>" + request.getServerName() + "</h2>");
+    out.println("sample");
     out.println("<form method=\"GET\" action=\"" + request.getContextPath() + "/NormalServlet\">");
     out.println("<input type=\"submit\" value =\"normal\">");
     out.println("</form>");
