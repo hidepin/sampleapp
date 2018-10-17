@@ -9,6 +9,8 @@ public class CookieServlet extends HttpServlet {
 
   private static String sessionKey = "counter";
 
+  private String key = "";
+
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
