@@ -108,6 +108,6 @@ public class CookieServlet extends HttpServlet {
   }
 
   private void hello() {
-    System.out.println("hello");
+    System.out.println("hello\n");
   }
 }
