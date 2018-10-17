@@ -81,7 +81,7 @@
             <id>process-classes</id>
             <phase>process-classes</phase>
             <configuration>
-                <threshold>Low</threshold>
+                <threshold>High</threshold>
                 <xmlOutput>true</xmlOutput>
                 <failOnError>false</failOnError>
             </configuration>
